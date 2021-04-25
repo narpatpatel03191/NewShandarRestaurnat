@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "173395686546",
+    "project_id": "new-shandar-restaurant",
+    "storage_bucket": "new-shandar-restaurant.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173395686546:android:607d921dc20881867c224b",
+        "android_client_info": {
+          "package_name": "narpatpatel031999.com.newshandarrestaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173395686546-tnbrlf1gdurd8qn2d8oi4vn1p0r15drl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9DaBrUr26daozz38uLVAGZHjGmpLh8Aw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173395686546-tnbrlf1gdurd8qn2d8oi4vn1p0r15drl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
