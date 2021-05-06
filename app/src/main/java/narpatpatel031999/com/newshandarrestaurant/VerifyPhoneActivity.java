@@ -4,25 +4,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.TimeUnit;
 public class VerifyPhoneActivity extends AppCompatActivity {
     private String mVerificationId;
-
     private EditText editTextCode;
-
     private FirebaseAuth mAuth;
+    FirebaseFirestore fStore;
+    String mobile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,20 +37,24 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         setTitle("Verify");
 
         mAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
         editTextCode = findViewById(R.id.editTextCode);
         Intent intent = getIntent();
-        String mobile = intent.getStringExtra("mobile");
+        mobile = intent.getStringExtra("mobile");
         sendVerificationCode(mobile);
         findViewById(R.id.buttonSignIn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String code = editTextCode.getText().toString().trim();
-                if (code.isEmpty() || code.length() < 6) {
-                    editTextCode.setError("Enter valid code");
-                    editTextCode.requestFocus();
-                    return;
-                }
-                verifyVerificationCode(code);
+
+                    String code = editTextCode.getText().toString().trim();
+                    if (code.isEmpty() || code.length() < 6) {
+                        editTextCode.setError("Enter valid code");
+                        editTextCode.requestFocus();
+                        return;
+                    }
+                    verifyVerificationCode(code);
+
+
             }
         });
     }
@@ -76,6 +86,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         public void onCodeSent(String s, @NotNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
             mVerificationId = s;
+
         }
     };
 
@@ -83,6 +94,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     private void verifyVerificationCode(String code) {
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code);
         signInWithPhoneAuthCredential(credential);
+
     }
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
@@ -91,26 +103,33 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NotNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Intent intent = new Intent(VerifyPhoneActivity.this, MainScreen.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
+                            DocumentReference docRef=fStore.collection("user").document(mAuth.getUid());
 
-                        } else {
-
-                            String message = "Somthing is wrong, we will fix it soon...";
-
-                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                message = "Invalid code entered...";
-                            }
-
-                            Snackbar snackbar = Snackbar.make(findViewById(R.id.parent), message, Snackbar.LENGTH_LONG);
-                            snackbar.setAction("Dismiss", new View.OnClickListener() {
+                            docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                                    if(documentSnapshot.exists()){
+                                        Intent intent = new Intent(VerifyPhoneActivity.this, MainScreen.class);
+                                        startActivity(intent);
+                                    }
+                                    else
+                                    {
+
+                                        Intent intent = new Intent(VerifyPhoneActivity.this, Register.class);
+                                        intent.putExtra("mobile",mobile);
+                                        startActivity(intent);
+                                    }
+                                    finish();
 
                                 }
                             });
-                            snackbar.show();
+                        }
+                        else {
+                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                                Toast.makeText(getApplicationContext(),"Verification Code entered was invalid",Toast.LENGTH_SHORT).show();
+                            }
+
                         }
                     }
                 });

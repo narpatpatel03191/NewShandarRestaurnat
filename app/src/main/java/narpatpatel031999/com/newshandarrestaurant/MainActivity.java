@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.buttonContinue).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String mobile = editTextMobile.getText().toString().trim();
 
                 if(mobile.isEmpty() || mobile.length() < 10){
@@ -39,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, VerifyPhoneActivity.class);
                 intent.putExtra("mobile", mobile);
                 startActivity(intent);
+                finish();
             }
         });
 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C56F8C"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:text="A Privacy Policy is a legal statement that specifies what the business owner does with the personal data collected from users, along with how the data is processed and for what purposes.
+
+In 1968, Council of Europe did studies on the threat of the Internet expansion as they were concerned with the effects of technology on human rights. This lead to the development of policies that were to be developed to protect personal data.
+
+This marks the start of what we know now as a Privacy Policy. While the name Privacy Policy refers to the legal agreement, the concept of privacy and protecting user data is closely related.
+
+This agreement can also be known under these names:
+
+Privacy Statement
+Privacy Notice
+Privacy Information
+Privacy Page
+
+The requirements for Privacy Policies may differ from one country to another depending on the legislation. However, most privacy laws identify the following critical points that a business must comply with when dealing with personal data:
+
+Notice - Data collectors must clearly disclose what they are doing with the personal information from users before collecting it.
+Choice - The companies collecting the data must respect the choices of users on what information they choose to provide.
+Access - Users should be able to view, update or request the removal of personal data collected by the company.
+Security - Companies are entirely responsible for the accuracy and security (keeping it properly away from unauthorized eyes and hands) of the collected personal information.
+"
+/>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="narpatpatel031999.com.newshandarrestaurant">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.NewShandarRestaurant">
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        <activity android:name=".UserDetailProfile"></activity>
+        <activity android:name=".EmptyCart" />
+        <activity android:name=".BookingPage" />
+        <activity android:name=".AddToCart" />
+        <activity android:name=".ContactUs" />
+        <activity android:name=".UserPrivacy" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,9 +24,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="narpatpatel031999.com.newshandarrestaurant.MainActivity"/>
-        <activity android:name="narpatpatel031999.com.newshandarrestaurant.VerifyPhoneActivity"/>
-        <activity android:name="narpatpatel031999.com.newshandarrestaurant.MainScreen"/>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".VerifyPhoneActivity" />
+        <activity android:name=".MainScreen" />
+        <activity android:name=".Register" />
+        <activity android:name=".foodDetail" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

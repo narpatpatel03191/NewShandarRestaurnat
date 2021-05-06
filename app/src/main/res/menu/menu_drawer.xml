@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/userProfilee"
+        android:icon="@drawable/ic_profile_user"
+        android:title="My Profile"
+        android:iconTint="@color/white"/>
+    <item
+        android:id="@+id/userCart"
+        android:icon="@drawable/ic_cart"
+        android:title="My Cart"
+        android:iconTint="@color/white"/>
+    <item
+        android:id="@+id/userOrdere"
+        android:icon="@drawable/ic_order"
+        android:title="My Order"
+        android:iconTint="@color/white"/>
+    <item
+        android:id="@+id/contacte"
+        android:icon="@drawable/ic_communicate__2_"
+        android:title="Contact Us"
+        android:iconTint="@color/white"/>
+    <item
+        android:id="@+id/privacye"
+        android:icon="@drawable/ic_baseline_privacy_tip_24"
+        android:title="User Privacy"
+        android:iconTint="@color/white"/>
+    <item
+        android:id="@+id/aboute"
+        android:icon="@drawable/ic_file"
+        android:title="About Us"
+        android:iconTint="@color/white"/>
+    <item
+        android:id="@+id/logOute"
+        android:icon="@drawable/ic_baseline_login_24"
+        android:title="Logout"
+        android:iconTint="@color/white"/>
+
+
+</menu>
