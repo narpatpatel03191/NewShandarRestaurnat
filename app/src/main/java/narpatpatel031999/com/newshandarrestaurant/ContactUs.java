@@ -15,13 +15,14 @@ public class ContactUs extends AppCompatActivity {
         setContentView(R.layout.activity_contact_us);
         setTitle("Contact Us");
     }
-    public void myWebsite(View view){
+
+    public void myWebsite(View view) {
         openUrl("https://new-shandar-restaurant.web.app");
     }
 
     private void openUrl(String s) {
-        Uri uri=Uri.parse(s);
-        Intent intent=new Intent(Intent.ACTION_VIEW,uri);
+        Uri uri = Uri.parse(s);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
 }

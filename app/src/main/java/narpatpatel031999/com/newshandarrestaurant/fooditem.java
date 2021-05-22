@@ -1,17 +1,18 @@
 package narpatpatel031999.com.newshandarrestaurant;
 
 public class fooditem {
-    String Food_Name,Image,Price,Description ,Id;
+    String Food_Name, Image, Price, Description, Id;
 
-    public fooditem(){
+    public fooditem() {
 
     }
-    public  fooditem(String Food_Name,String Image,String Price,String Description,String Id){
-        this.Price=Price;
-        this.Description=Description;
-        this.Food_Name=Food_Name;
-        this.Image=Image;
-        this.Id=Id;
+
+    public fooditem(String Food_Name, String Image, String Price, String Description, String Id) {
+        this.Price = Price;
+        this.Description = Description;
+        this.Food_Name = Food_Name;
+        this.Image = Image;
+        this.Id = Id;
     }
 
     public String getPrice() {
@@ -33,7 +34,9 @@ public class fooditem {
         return Image;
     }
 
-    public String getId(){return Id;}
+    public String getId() {
+        return Id;
+    }
 
 }
 

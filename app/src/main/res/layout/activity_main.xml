@@ -6,16 +6,17 @@
     android:orientation="vertical"
     android:background="#C56F8C"
     android:paddingLeft="16dp"
+    android:gravity="center"
     android:paddingRight="16dp">
-
     <ImageView
-        android:id="@+id/imglogo"
-        android:layout_width="match_parent"
-        android:layout_height="408dp"
-        app:srcCompat="@drawable/logo" />
+        android:id="@+id/imgLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logo"
+        />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="45dp"
         android:orientation="horizontal"
@@ -24,7 +25,7 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="2dp"

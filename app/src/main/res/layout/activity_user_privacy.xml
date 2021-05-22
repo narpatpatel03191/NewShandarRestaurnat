@@ -1,47 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C56F8C"
     android:orientation="vertical"
+    android:background="@drawable/privacy"
     android:paddingLeft="16dp"
+    android:gravity="center"
     android:paddingRight="16dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="4dp"
+            android:background="@drawable/bullet"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:fontFamily="@font/allerta"
+            android:text="When You Register For New Shandar Restaurant to give us certain information.This includes your name,phone number and your food delivery address. This Data is only for order Booking purposes."
+            />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="4dp"
+            android:background="@drawable/bullet"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:fontFamily="@font/allerta"
+            android:text="Your data is completely safe with us . we don't use your credential for any advertisement purposes."
+            />
 
-
-    <TextView
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        android:layout_gravity="center"
-        android:text="A Privacy Policy is a legal statement that specifies what the business owner does with the personal data collected from users, along with how the data is processed and for what purposes.
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="4dp"
+            android:background="@drawable/bullet"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:fontFamily="@font/allerta"
+            android:text="We Don't use any other kind of hidden data from your device , neither do we require any external permissions to Run New Shandar Restaurant App. "
+            />
 
-In 1968, Council of Europe did studies on the threat of the Internet expansion as they were concerned with the effects of technology on human rights. This lead to the development of policies that were to be developed to protect personal data.
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="4dp"
+            android:background="@drawable/bullet"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:fontFamily="@font/allerta"
+            android:text="If you Still find any Wrong behaviour in this app you can Directly Contact Us ,Detail is Given in Contact us On Navigation View"
+            />
 
-This marks the start of what we know now as a Privacy Policy. While the name Privacy Policy refers to the legal agreement, the concept of privacy and protecting user data is closely related.
-
-This agreement can also be known under these names:
-
-Privacy Statement
-Privacy Notice
-Privacy Information
-Privacy Page
-
-The requirements for Privacy Policies may differ from one country to another depending on the legislation. However, most privacy laws identify the following critical points that a business must comply with when dealing with personal data:
-
-Notice - Data collectors must clearly disclose what they are doing with the personal information from users before collecting it.
-Choice - The companies collecting the data must respect the choices of users on what information they choose to provide.
-Access - Users should be able to view, update or request the removal of personal data collected by the company.
-Security - Companies are entirely responsible for the accuracy and security (keeping it properly away from unauthorized eyes and hands) of the collected personal information.
-"
-/>
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>

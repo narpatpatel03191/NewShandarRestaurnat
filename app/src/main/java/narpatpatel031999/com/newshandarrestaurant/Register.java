@@ -26,49 +26,44 @@ public class Register extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseFirestore fStore;
     String userId;
-    protected void onCreate(Bundle savedInstanceState){
+    String mobile;
+
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
         setTitle("User Detail");
-        String mobile=getIntent().getStringExtra("mobile");
-        name=findViewById(R.id.userName);
-        address=findViewById(R.id.userAddress);
-        register=findViewById(R.id.Register);
-        firebaseAuth= FirebaseAuth.getInstance();
+         mobile = getIntent().getStringExtra("mobile");
+        name = findViewById(R.id.userName);
+        address = findViewById(R.id.userAddress);
+        register = findViewById(R.id.Register);
+        firebaseAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        userId=firebaseAuth.getCurrentUser().getUid();
-        DocumentReference docRef=fStore.collection("user").document(userId);
+        userId = firebaseAuth.getCurrentUser().getUid();
+        DocumentReference docRef = fStore.collection("user").document(userId);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!name.getText().toString().isEmpty() && !address.getText().toString().isEmpty() )
-                {
-                    String uName=name.getText().toString();
-                    String uAddress=address.getText().toString();
-                    Map<String , Object>user=new HashMap<>();
-                    user.put("FullName",uName);
-                    user.put("Address",uAddress);
-                    user.put("Mobile",mobile);
+                if (!name.getText().toString().isEmpty() && !address.getText().toString().isEmpty()) {
+                    String uName = name.getText().toString();
+                    String uAddress = address.getText().toString();
+                    Map<String, Object> user = new HashMap<>();
+                    user.put("FullName", uName);
+                    user.put("Address", uAddress);
+                    user.put("Mobile", mobile);
                     docRef.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful())
-                            {
-                                startActivity(new Intent(getApplicationContext(),MainScreen.class));
+                            if (task.isSuccessful()) {
+                                startActivity(new Intent(getApplicationContext(), MainScreen.class));
                                 finish();
-                            }
-                            else
-                            {
-                                Toast.makeText(Register.this,"Data is Not Inserted",Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(Register.this, "Data is Not Inserted", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
-                }
-
-                else
-                {
-                    Toast.makeText(Register.this,"All Fields are required",Toast.LENGTH_SHORT).show();
-                    return ;
+                } else {
+                    Toast.makeText(Register.this, "All Fields are required", Toast.LENGTH_SHORT).show();
+                    return;
                 }
             }
         });

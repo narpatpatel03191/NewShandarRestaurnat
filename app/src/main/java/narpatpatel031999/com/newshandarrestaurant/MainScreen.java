@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -39,6 +41,7 @@ public class MainScreen extends AppCompatActivity {
     ViewAdapter adapter;
     FirebaseFirestore db;
     ImageSlider mainSlider;
+    TextView userName, userMobileNumber;
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
@@ -46,8 +49,7 @@ public class MainScreen extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(foodDetail.cartList.size()==0)
-        {
+        if (foodDetail.cartList.size() == 0) {
             foodDetail.fetchCartList();
         }
     }
@@ -69,6 +71,23 @@ public class MainScreen extends AppCompatActivity {
 
         nv = (NavigationView) findViewById(R.id.nav);
         View headerView = nv.getHeaderView(0);
+        userName = headerView.findViewById(R.id.navUserName);
+        userMobileNumber = headerView.findViewById(R.id.userNumber);
+
+        FirebaseFirestore.getInstance().collection("user").document(FirebaseAuth.getInstance().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                if (documentSnapshot.exists()) {
+                    String name = documentSnapshot.getString("FullName");
+                    String mobile = documentSnapshot.getString("Mobile");
+                    userName.setText(name);
+                    userMobileNumber.setText("91" + mobile);
+                }
+
+            }
+        });
+
 
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -77,18 +96,15 @@ public class MainScreen extends AppCompatActivity {
                 switch (id) {
                     case R.id.userProfilee:
                         Toast.makeText(MainScreen.this, "My Profile", Toast.LENGTH_SHORT).show();
-                        Intent intent4=new Intent(getApplicationContext(),UserDetailProfile.class);
+                        Intent intent4 = new Intent(getApplicationContext(), UserDetailProfile.class);
                         startActivity(intent4);
                         break;
                     case R.id.userCart:
                         Toast.makeText(MainScreen.this, "My Cart", Toast.LENGTH_SHORT).show();
-                        if(foodDetail.cartList.size()!=0)
-                        {
+                        if (foodDetail.cartList.size() != 0) {
                             Intent intent = new Intent(MainScreen.this, AddToCart.class);
                             startActivity(intent);
-                        }
-                        else
-                        {
+                        } else {
 
                             Intent intent = new Intent(MainScreen.this, EmptyCart.class);
                             startActivity(intent);
@@ -96,6 +112,8 @@ public class MainScreen extends AppCompatActivity {
                         break;
                     case R.id.userOrdere:
                         Toast.makeText(MainScreen.this, "My Order", Toast.LENGTH_SHORT).show();
+                        Intent intent6=new Intent(getApplicationContext(),MyOrders.class);
+                        startActivity(intent6);
                         break;
                     case R.id.contacte:
                         Toast.makeText(MainScreen.this, "Contact Us", Toast.LENGTH_SHORT).show();
@@ -109,6 +127,8 @@ public class MainScreen extends AppCompatActivity {
                         break;
                     case R.id.aboute:
                         Toast.makeText(MainScreen.this, "About Us", Toast.LENGTH_SHORT).show();
+                        Intent intent5 = new Intent(MainScreen.this, AboutUs.class);
+                        startActivity(intent5);
                         break;
                     case R.id.logOute:
                         AlertDialog.Builder builder1 = new AlertDialog.Builder(MainScreen.this);
@@ -121,7 +141,7 @@ public class MainScreen extends AppCompatActivity {
                                         Toast.makeText(MainScreen.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
                                         FirebaseAuth.getInstance().signOut();
                                         finish();
-                                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                                     }
                                 });
@@ -192,13 +212,10 @@ public class MainScreen extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.cartView:
-                if(foodDetail.cartList.size()!=0)
-                {
+                if (foodDetail.cartList.size() != 0) {
                     Intent intent = new Intent(MainScreen.this, AddToCart.class);
                     startActivity(intent);
-                }
-                else
-                {
+                } else {
 
                     Intent intent = new Intent(MainScreen.this, EmptyCart.class);
                     startActivity(intent);

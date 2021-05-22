@@ -5,13 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#C56F8C"
+    android:gravity="center"
     android:paddingLeft="16dp"
     android:paddingRight="16dp">
 
     <ImageView
-        android:id="@+id/imglogo"
+        android:id="@+id/imgLogo"
         android:layout_width="match_parent"
-        android:layout_height="364dp"
+        android:layout_height="wrap_content"
         app:srcCompat="@drawable/logo" />
 
     <LinearLayout
@@ -43,7 +44,7 @@
             android:background="@drawable/textview"
             android:padding="10dp"
             android:drawablePadding="10dp"
-            android:hint="enter verification code"
+            android:hint="Enter Verification Code"
             android:inputType="phone"
             android:maxLength="10" />
 

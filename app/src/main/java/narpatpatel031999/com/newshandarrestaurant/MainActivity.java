@@ -12,15 +12,15 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     private EditText editTextMobile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FirebaseAuth firebaseAuth= FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
-        if(firebaseUser!=null)
-        {
-            startActivity(new Intent(this,MainScreen.class));
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser != null) {
+            startActivity(new Intent(this, MainScreen.class));
         }
         setTitle("SignInPage");
         editTextMobile = findViewById(R.id.editTextMobile);
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String mobile = editTextMobile.getText().toString().trim();
 
-                if(mobile.isEmpty() || mobile.length() < 10){
+                if (mobile.isEmpty() || mobile.length() < 10) {
                     editTextMobile.setError("Enter a valid mobile");
                     editTextMobile.requestFocus();
                     return;

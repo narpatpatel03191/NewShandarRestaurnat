@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-        <activity android:name=".UserDetailProfile"></activity>
+        <activity android:name=".AboutUs"></activity>
+        <activity android:name=".UserDetailProfile" />
         <activity android:name=".EmptyCart" />
         <activity android:name=".BookingPage" />
         <activity android:name=".AddToCart" />
@@ -29,6 +30,7 @@
         <activity android:name=".MainScreen" />
         <activity android:name=".Register" />
         <activity android:name=".foodDetail" />
+        <activity android:name=".MyOrders" />
 
         <meta-data
             android:name="preloaded_fonts"

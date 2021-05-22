@@ -1,18 +1,20 @@
 package narpatpatel031999.com.newshandarrestaurant;
+
 public class cartItem {
 
-    String Food_Name,Image,Price,Id;
-    public long quantity=1;
-    public cartItem()
-    {
+    String Food_Name, Image, Price, Id;
+    public long quantity = 1;
+
+    public cartItem() {
 
     }
-    public cartItem( String food_Name, String image, String price, String id) {
+
+    public cartItem(String food_Name, String image, String price, String id) {
         Food_Name = food_Name;
         Image = image;
         Price = price;
         Id = id;
-        quantity=1;
+        quantity = 1;
     }
 
     public long getQuantity() {

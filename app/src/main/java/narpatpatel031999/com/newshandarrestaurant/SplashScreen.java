@@ -16,28 +16,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashScreen extends AppCompatActivity {
-    android.os.Handler handler=new Handler();;
-    ImageView iVTop,iVBottom,iVLogo;
+    android.os.Handler handler = new Handler();
+    ;
+    ImageView iVTop, iVBottom, iVLogo;
     TextView textView;
     CharSequence charSequence;
     int index;
-    long delay=90;
+    long delay = 90;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        iVTop=findViewById(R.id.iv_top);
-        iVBottom=findViewById(R.id.iv_bottom);
-        iVLogo=findViewById(R.id.logo);
-        textView=findViewById(R.id.text_view);
+        iVTop = findViewById(R.id.iv_top);
+        iVBottom = findViewById(R.id.iv_bottom);
+        iVLogo = findViewById(R.id.logo);
+        textView = findViewById(R.id.text_view);
         getSupportActionBar().hide();
-        Animation animation= AnimationUtils.loadAnimation(this,R.anim.top_wave);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.top_wave);
 
         iVTop.startAnimation(animation);
 
-        ObjectAnimator objectAnimator=ObjectAnimator.ofPropertyValuesHolder(iVLogo,
-                PropertyValuesHolder.ofFloat("scaleX",1.2f),
-                PropertyValuesHolder.ofFloat("scaleY",1.2f));
+        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(iVLogo,
+                PropertyValuesHolder.ofFloat("scaleX", 1.2f),
+                PropertyValuesHolder.ofFloat("scaleY", 1.2f));
 
         objectAnimator.setDuration(1500);
 
@@ -49,7 +51,7 @@ public class SplashScreen extends AppCompatActivity {
         animatText("New Shandar Restaurant");
 
 
-        Animation animation1=AnimationUtils.loadAnimation(this,R.anim.bottom_wave);
+        Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.bottom_wave);
 
         iVBottom.setAnimation(animation1);
 
@@ -57,32 +59,34 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 Intent intent;
-                if(FirebaseAuth.getInstance().getCurrentUser()!=null)
+                if (FirebaseAuth.getInstance().getCurrentUser() != null)
                     intent = new Intent(SplashScreen.this, MainScreen.class);
                 else
-                     intent = new Intent(SplashScreen.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+                    intent = new Intent(SplashScreen.this, MainActivity.class);
+                startActivity(intent);
+                finish();
 
             }
         }, 3000);
     }
-    Runnable runnable=new Runnable() {
+
+    Runnable runnable = new Runnable() {
         @Override
         public void run() {
-             textView.setText(charSequence.subSequence(0,index++));
+            textView.setText(charSequence.subSequence(0, index++));
 
-             if(index<=charSequence.length()){
-                 handler.postDelayed(runnable,delay);
-             }
+            if (index <= charSequence.length()) {
+                handler.postDelayed(runnable, delay);
+            }
         }
     };
-    public void animatText (CharSequence cs){
-        charSequence=cs;
-        index=0;
+
+    public void animatText(CharSequence cs) {
+        charSequence = cs;
+        index = 0;
         textView.setText("");
         handler.removeCallbacks(runnable);
-        handler.postDelayed(runnable,delay);
+        handler.postDelayed(runnable, delay);
     }
 
 }
